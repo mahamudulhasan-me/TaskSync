@@ -1,11 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify/dist";
 import logInImg from "../assets/images/login-img.svg";
 import secretary from "../assets/images/pngwing.com.png";
 import SignUp from "../authentication/SignUp";
 import SingIn from "../authentication/SingIn";
+import { AuthContext } from "../provider/AuthProvider";
 const SignInSignUp = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
+  const { signInWithGoogle } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const handleGoogleLogIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        navigate("/");
+        toast.success(`Welcome ${user.displayName}`);
+        const userInfo = {
+          name: user.displayName,
+          email: user.email,
+          userUid: user.uid,
+        };
+      })
+      .catch((err) => toast.error(err.message));
+  };
   return (
     <div className="bg-slate-50 min-h-screen px-[10%] grid grid-cols-2 items-center justify-center gap-10">
       <div className="flex flex-col items-center">
@@ -19,7 +39,10 @@ const SignInSignUp = () => {
         <h1 className="text-5xl">{isSignUpActive ? "Sign Up" : "Sign In"}</h1>
         <p>Free access to our dashboard.</p>
 
-        <button className="flex justify-center items-center w-fit mx-auto border rounded-md p-2 text-lg gap-2 hover:bg-secondary transition-all mt-16 mb-8">
+        <button
+          onClick={handleGoogleLogIn}
+          className="flex justify-center items-center w-fit mx-auto border rounded-md p-2 text-lg gap-2 hover:bg-secondary transition-all mt-16 mb-8"
+        >
           <FcGoogle size={24} /> SignIn With Google
         </button>
 
