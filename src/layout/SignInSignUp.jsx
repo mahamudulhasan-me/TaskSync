@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify/dist";
 import logInImg from "../assets/images/login-img.svg";
 import secretary from "../assets/images/pngwing.com.png";
 import SignUp from "../authentication/SignUp";
@@ -17,14 +16,14 @@ const SignInSignUp = () => {
       .then((result) => {
         const user = result.user;
         navigate("/");
-        toast.success(`Welcome ${user.displayName}`);
+        // toast.success(`Welcome ${user.displayName}`);
         const userInfo = {
           name: user.displayName,
           email: user.email,
           userUid: user.uid,
         };
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => console.log(err.message));
   };
   return (
     <div className="bg-slate-50 min-h-screen px-[10%] grid grid-cols-2 items-center justify-center gap-10">

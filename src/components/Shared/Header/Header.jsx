@@ -3,7 +3,6 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { BiSearchAlt } from "react-icons/bi";
 import { FaSignOutAlt, FaTasks } from "react-icons/fa";
 import { IoMdPeople } from "react-icons/io";
-import { toast } from "react-toastify/dist";
 import profilePic from "../../../assets/images/icons/man.png";
 import { AuthContext } from "../../../provider/AuthProvider";
 
@@ -12,9 +11,7 @@ const Header = () => {
   const profileModalRef = useRef(null);
   const { logOut } = useContext(AuthContext);
   const handleLogout = () => {
-    logOut()
-      .then(() => toast.warning("Logged out"))
-      .catch((err) => toast.error(err.message));
+    logOut().then().catch();
   };
   // Add a click event listener to detect clicks outside the profileModal
   useEffect(() => {
