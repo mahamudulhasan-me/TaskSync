@@ -9,7 +9,8 @@ import { AuthContext } from "../../../provider/AuthProvider";
 const Header = () => {
   const [profileModal, setProfileModal] = useState(false);
   const profileModalRef = useRef(null);
-  const { logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   const handleLogout = () => {
     logOut().then().catch();
   };
@@ -48,8 +49,8 @@ const Header = () => {
       </div>
       <div>
         <div className="flex items-center gap-2">
-          <span>
-            <h2 className="font-semibold">Mahamudul Hasan</h2>
+          <span className="text-right">
+            <h2 className="font-semibold">{user?.displayName}</h2>
             <p>Designation</p>
           </span>
           <div
@@ -57,7 +58,7 @@ const Header = () => {
             ref={profileModalRef}
           >
             <img
-              src={profilePic}
+              src={user?.photoURL ? user?.photoURL : profilePic}
               alt=""
               className="w-12 h-12 ring ring-secondary rounded-full cursor-pointer"
             />
@@ -65,12 +66,12 @@ const Header = () => {
               <div className="absolute right-5 top-20 bg-white p-3 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg">
                 <div className="flex gap-2 border-b py-4">
                   <img
-                    src={profilePic}
+                    src={user?.photoURL ? user?.photoURL : profilePic}
                     alt=""
                     className="w-12 h-12 ring ring-secondary rounded-full"
                   />
                   <div>
-                    <h1 className="font-semibold">Mahamudul Hasan</h1>
+                    <h1 className="font-semibold">{user?.displayName}</h1>
                     <p>View Profile</p>
                   </div>
                 </div>
