@@ -1,5 +1,9 @@
 import React from "react";
-import { BiSolidDashboard, BiSolidMessageSquareAdd } from "react-icons/bi";
+import {
+  BiSolidDashboard,
+  BiSolidMessageSquareAdd,
+  BiTask,
+} from "react-icons/bi";
 import { FaCog, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { RiTeamFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -17,6 +21,11 @@ const Navbar = () => {
         <li>
           <Link className="flex items-center gap-2 text-lg">
             <BiSolidDashboard size={24} /> Dashboard
+          </Link>
+        </li>
+        <li>
+          <Link to={"/myTask"} className="flex items-center gap-2 text-lg">
+            <BiTask size={24} /> My Task
           </Link>
         </li>
         <li>

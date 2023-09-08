@@ -63,7 +63,7 @@ const Header = () => {
               className="w-12 h-12 ring ring-secondary rounded-full cursor-pointer"
             />
             {profileModal && (
-              <div className="absolute right-5 top-20 bg-white p-3 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg">
+              <div className="z-50 absolute right-5 top-20 bg-white p-3 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg">
                 <div className="flex gap-2 border-b py-4">
                   <img
                     src={user?.photoURL ? user?.photoURL : profilePic}
