@@ -52,7 +52,7 @@ const MyTask = () => {
         </p>
       ) : (
         <div className="overflow-x-auto text-gray-700">
-          <table className="table table-zebra">
+          <table className="table table-zebra ">
             {/* head */}
             <thead className="text-gray-700 text-lg">
               <tr>
@@ -65,7 +65,7 @@ const MyTask = () => {
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className="text-lg">
               {/* Map through tasks and render each task */}
               {tasks.map((task, index) => (
                 <tr key={task.id}>

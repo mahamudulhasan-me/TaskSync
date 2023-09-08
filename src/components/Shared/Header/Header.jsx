@@ -4,6 +4,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { FaBell, FaSignOutAlt, FaTasks } from "react-icons/fa";
 import { IoMdPeople } from "react-icons/io";
+import { Link } from "react-router-dom";
 import profilePic from "../../../assets/images/icons/man.png";
 import { AuthContext } from "../../../provider/AuthProvider";
 import OtherMemberProfile from "../../OtherMemberProfile/OtherMemberProfile";
@@ -58,7 +59,12 @@ const Header = () => {
           <OtherMemberProfile />
           <BsFillPlusCircleFill className="text-4xl -ml-5 text-primary bg-secondary rounded-full cursor-pointer" />
         </div>
-        <FaBell size={24} />
+        <div className="relative">
+          <FaBell size={24} />
+          <span className="absolute -top-2 -right-2 text-xs text-white bg-primary rounded-full p-1">
+            0
+          </span>
+        </div>
         <div className="flex items-center gap-2">
           <span className="text-right">
             <h2 className="font-semibold">{user?.displayName}</h2>
@@ -83,13 +89,13 @@ const Header = () => {
                   />
                   <div>
                     <h1 className="font-semibold">{user?.displayName}</h1>
-                    <p>View Profile</p>
+                    <Link to={`/profile/${user?.uid}`}>View Profile</Link>
                   </div>
                 </div>
                 <div className="border-b py-4 space-y-2">
-                  <p className="flex items-center gap-2 ">
+                  <Link to={"/myTask"} className="flex items-center gap-2 ">
                     <FaTasks /> My Task
-                  </p>
+                  </Link>
                   <p className="flex items-center gap-2 ">
                     <IoMdPeople /> Members
                   </p>
