@@ -40,7 +40,10 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link className="flex items-center gap-2 text-lg">
+          <Link
+            to={"/teamCollaboration"}
+            className="flex items-center gap-2 text-lg"
+          >
             <RiTeamFill size={24} /> Team Collaboration
           </Link>
         </li>

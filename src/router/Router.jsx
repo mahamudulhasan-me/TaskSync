@@ -3,6 +3,7 @@ import CreateTask from "../components/Shared/Pages/CreateTask";
 import Dashboard from "../components/Shared/Pages/Dashboard";
 import MyTask from "../components/Shared/Pages/MyTask";
 import Profile from "../components/Shared/Pages/Profile";
+import TeamCollaboration from "../components/Shared/Pages/TeamCollaboration";
 import Main from "../layout/Main";
 import SignInSignUp from "../layout/SignInSignUp";
 import ProtectedRoute from "./ProtectedRouter";
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Profile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/teamCollaboration",
+        element: (
+          <ProtectedRoute>
+            <TeamCollaboration />
           </ProtectedRoute>
         ),
       },
