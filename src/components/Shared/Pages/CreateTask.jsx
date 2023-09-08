@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { FaChartLine } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const CreateTask = () => {
@@ -30,6 +31,7 @@ const CreateTask = () => {
       taskCreator: displayName,
       taskCreatorEmail: email,
       taskCreatorId: uid,
+      taskCompleted: false,
       title,
       category,
       startDate,
@@ -46,7 +48,11 @@ const CreateTask = () => {
 
     // Store the updated tasks back in local storage
     localStorage.setItem("tasks", JSON.stringify(existingTasks));
-
+    Swal.fire(
+      "Task Create Successfully!",
+      "You clicked the button!",
+      "success"
+    );
     // Clear the form fields (you can do this by resetting the form or clearing individual fields)
     form.reset();
   };
