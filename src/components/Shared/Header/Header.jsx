@@ -13,7 +13,7 @@ const Header = () => {
   const [profileModal, setProfileModal] = useState(false);
   const profileModalRef = useRef(null);
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+
   const handleLogout = () => {
     logOut().then().catch();
   };

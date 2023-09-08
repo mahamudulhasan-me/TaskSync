@@ -73,7 +73,17 @@ const MyTask = () => {
                   <td>{task.title}</td>
                   <td>{task.endDate}</td>
                   <td>{task.priority}</td>
-                  <td>{task.status ? "Completed" : "Pending"}</td>
+                  <td>
+                    {task.status ? (
+                      <span className="bg-green-600 p-0.5 rounded-sm text-white">
+                        Completed
+                      </span>
+                    ) : (
+                      <span className="bg-orange-500 p-0.5 rounded-sm text-white">
+                        In Progress
+                      </span>
+                    )}
+                  </td>
                   <td>
                     <button
                       disabled={task.status ? true : false}

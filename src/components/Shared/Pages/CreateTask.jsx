@@ -4,6 +4,7 @@ import { FaChartLine } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
+import TaskProgress from "../TaskProgress/TaskProgress";
 
 const CreateTask = () => {
   const { user } = useContext(AuthContext);
@@ -58,109 +59,117 @@ const CreateTask = () => {
   };
 
   return (
-    <div>
-      <header className="flex justify-between items-center border-b mt-5 pb-2">
-        <h1 className="text-4xl flex items-center">
-          Create Task <AiOutlineAppstoreAdd />
-        </h1>
-        <Link className="flex gap-2 items-center bg-primary text-gray-200 px-3 py-2 rounded-md ">
-          Track Task <FaChartLine />
-        </Link>
-      </header>
+    <div className="grid grid-cols-12 gap-10">
+      <div className="col-span-8">
+        <header className="flex justify-between items-center border-b mt-5 pb-2">
+          <h1 className="text-4xl flex items-center">
+            Create Task <AiOutlineAppstoreAdd />
+          </h1>
+          <Link className="flex gap-2 items-center bg-primary text-gray-200 px-3 py-2 rounded-md ">
+            Track Task <FaChartLine />
+          </Link>
+        </header>
 
-      {/* task create from  */}
-      <form
-        onSubmit={handleCreateTask}
-        className="bg-white px-10 mt-6 py-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] space-y-3"
-      >
-        <div className="create_task">
-          <label htmlFor="title">Task Title*</label> <br />
-          <input
-            type="text"
-            name="title"
-            className="create_task-input"
-            placeholder="Task Title/Project Name"
-            required
-          />
-        </div>
-        {/* task category  */}
-        <div>
-          <label htmlFor="title">Task Category*</label> <br />
-          <select className="create_task-input" name="category" required>
-            <option value="">Select Category</option>
-            <option value="UI/UX Design">UI/UX Design</option>
-            <option value="Web Development">Web Development</option>
-            <option value="App Development">App Development</option>
-            <option value="Digital Marketing">Digital Marketing</option>
-            <option value="Software Testing">Software Testing</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        {/* task due date  */}
-        <div className="grid grid-cols-2 gap-5">
-          <div>
-            <label htmlFor="startDate">Task Start Date</label> <br />
+        {/* task create from  */}
+        <form
+          onSubmit={handleCreateTask}
+          className="bg-white px-10 mt-6 py-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] space-y-3"
+        >
+          <div className="create_task">
+            <label htmlFor="title">Task Title*</label> <br />
             <input
-              type="date"
-              name="startDate"
-              id="startDate"
+              type="text"
+              name="title"
               className="create_task-input"
-            />
-          </div>
-          <div>
-            <label htmlFor="endDate">Task End Date*</label> <br />
-            <input
-              type="date"
-              name="endDate"
-              id="endDate"
-              className="create_task-input"
+              placeholder="Task Title/Project Name"
               required
             />
           </div>
-        </div>
-        {/* priority lavel */}
-        <div className="grid grid-cols-5 gap-5">
-          <div className="col-span-2">
-            <label htmlFor="startDate">Priority*</label> <br />
-            <select className="create_task-input" name="priority" required>
-              <option value="">Select Priority</option>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
+          {/* task category  */}
+          <div>
+            <label htmlFor="title">Category*</label> <br />
+            <select className="create_task-input" name="category" required>
+              <option value="">Select Category</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Web Development">Web Development</option>
+              <option value="App Development">App Development</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="Software Testing">Software Testing</option>
+              <option value="Other">Other</option>
             </select>
           </div>
+          {/* task due date  */}
+          <div className="grid grid-cols-2 gap-5">
+            <div>
+              <label htmlFor="startDate">Start Date</label> <br />
+              <input
+                type="date"
+                name="startDate"
+                id="startDate"
+                className="create_task-input"
+              />
+            </div>
+            <div>
+              <label htmlFor="endDate">End Date*</label> <br />
+              <input
+                type="date"
+                name="endDate"
+                id="endDate"
+                className="create_task-input"
+                required
+              />
+            </div>
+          </div>
+          {/* priority lavel */}
+          <div className="grid grid-cols-5 gap-5">
+            <div className="col-span-2">
+              <label htmlFor="startDate">Priority*</label> <br />
+              <select className="create_task-input" name="priority" required>
+                <option value="">Select Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
 
-          {/* notification  */}
-          <div className="col-span-3">
-            <label htmlFor="startDate">Notification Send</label> <br />
-            <select name="notification" id="" className="create_task-input">
-              <option value="All">All</option>
-              <option value="Team Leader Only">Team Leader Only</option>
-              <option value="Team Member Only">Team Member Only</option>
-            </select>
+            {/* notification  */}
+            <div className="col-span-3">
+              <label htmlFor="startDate">Notification Send</label> <br />
+              <select name="notification" id="" className="create_task-input">
+                <option value="All">All</option>
+                <option value="Team Leader Only">Team Leader Only</option>
+                <option value="Team Member Only">Team Member Only</option>
+              </select>
+            </div>
           </div>
-        </div>
-        {/* description */}
-        <div>
-          <label htmlFor="description">Task Description</label> <br />
-          <textarea
-            name="description"
-            id=""
-            rows="3"
-            className="create_task-input"
-            placeholder="Add any extra details about the request"
-          ></textarea>
-        </div>
-        <button className="bg-primary text-gray-200 px-4 py-2 rounded-md font-semibold">
-          Create
-        </button>
-        {/* <but
+          {/* description */}
+          <div>
+            <label htmlFor="description">Description</label> <br />
+            <textarea
+              name="description"
+              id=""
+              rows="3"
+              className="create_task-input"
+              placeholder="Add any extra details about the request"
+            ></textarea>
+          </div>
+          <button className="bg-primary text-gray-200 px-4 py-2 rounded-md font-semibold">
+            Create
+          </button>
+          {/* <but
           onClick={clearForm}
           className="bg-gray-700 text-gray-200 px-4 py-2 rounded-md ml-3"
         >
           Clear Form
         </but> */}
-      </form>
+        </form>
+      </div>
+      <div className="col-span-4">
+        <header className="flex justify-between items-center border-b mt-5 pb-2">
+          <h1 className="text-3xl flex items-center">Related Activity</h1>
+        </header>
+        <TaskProgress />
+      </div>
     </div>
   );
 };

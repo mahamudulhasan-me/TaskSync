@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BiSolidDashboard,
   BiSolidMessageSquareAdd,
@@ -8,7 +8,13 @@ import { FaCog, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { RiTeamFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/images/pngwing.com.png";
+import { AuthContext } from "../../../provider/AuthProvider";
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut().then().catch();
+  };
   return (
     <nav className="col-span-3 bg-primary rounded-2xl h-[calc(100vh-3rem)] py-5 px-10 text-gray-200">
       <div className="flex items-center justify-center gap-2">
@@ -41,7 +47,10 @@ const Navbar = () => {
       </ul>
       <ul className="py-5 space-y-3">
         <li>
-          <Link className="flex items-center gap-2 text-lg">
+          <Link
+            to={`/profile/${user?.uid}`}
+            className="flex items-center gap-2 text-lg"
+          >
             <FaUserCircle size={24} /> Profile
           </Link>
         </li>
@@ -51,7 +60,10 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link className="flex items-center gap-2 text-lg">
+          <Link
+            onClick={handleLogout}
+            className="flex items-center gap-2 text-lg"
+          >
             <FaSignOutAlt size={24} /> Logout
           </Link>
         </li>

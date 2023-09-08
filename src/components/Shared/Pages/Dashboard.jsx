@@ -12,8 +12,11 @@ const Dashboard = () => {
         <h1 className="text-4xl flex items-center">
           Dashboard <AiOutlineAppstoreAdd />
         </h1>
-        <Link className="flex gap-2 items-center bg-primary text-gray-200 px-3 py-2 rounded-md ">
-          Track Task <FaChartLine />
+        <Link
+          to={"/myTask"}
+          className="flex gap-2 items-center bg-primary text-gray-200 px-3 py-2 rounded-md "
+        >
+          My Task <FaChartLine />
         </Link>
       </header>
       <Lottie
