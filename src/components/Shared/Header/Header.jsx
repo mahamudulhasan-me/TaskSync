@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { BiSearchAlt } from "react-icons/bi";
-import { FaSignOutAlt, FaTasks } from "react-icons/fa";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+import { FaBell, FaSignOutAlt, FaTasks } from "react-icons/fa";
 import { IoMdPeople } from "react-icons/io";
 import profilePic from "../../../assets/images/icons/man.png";
 import { AuthContext } from "../../../provider/AuthProvider";
+import OtherMemberProfile from "../../OtherMemberProfile/OtherMemberProfile";
 
 const Header = () => {
   const [profileModal, setProfileModal] = useState(false);
@@ -34,7 +36,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="w-full flex justify-between box-shadow: 0 3px 10px rgb(0,0,0,0.2);">
+    <div className="w-full flex justify-between shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-l-lg rounded-r-2xl">
       <div className="bg-[#EEEEEE] flex items-center w-fit pl-4 gap-4 rounded-lg">
         <p>
           <BiSearchAlt size={24} />
@@ -47,7 +49,16 @@ const Header = () => {
           placeholder="Search"
         />
       </div>
-      <div>
+      <div className="flex items-center gap-4">
+        <div className="flex items-center">
+          <OtherMemberProfile />
+          <OtherMemberProfile />
+          <OtherMemberProfile />
+          <OtherMemberProfile />
+          <OtherMemberProfile />
+          <BsFillPlusCircleFill className="text-4xl -ml-5 text-primary bg-secondary rounded-full cursor-pointer" />
+        </div>
+        <FaBell size={24} />
         <div className="flex items-center gap-2">
           <span className="text-right">
             <h2 className="font-semibold">{user?.displayName}</h2>

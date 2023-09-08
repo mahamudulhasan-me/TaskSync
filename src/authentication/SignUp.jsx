@@ -1,5 +1,6 @@
 import { updateProfile } from "firebase/auth";
 import React, { useContext, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
@@ -7,6 +8,7 @@ const SignUp = ({ isSignUpActive, setIsSignUpActive }) => {
   const { createNewUser } = useContext(AuthContext);
   const [passError, setPassError] = useState("");
   const [solidPassword, setSolidPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const passwordHandle = (e) => {
     setPassError("");
     const password = e.target.value;
@@ -77,15 +79,22 @@ const SignUp = ({ isSignUpActive, setIsSignUpActive }) => {
         placeholder="example@gmail.com"
       />
       {/* password */}
-      <label htmlFor="password">Password</label> <br />
-      <input
-        onChange={passwordHandle}
-        type="password"
-        id="password"
-        name="password"
-        className="input-style"
-        placeholder="6+ character required"
-      />
+      <div className="relative">
+        <label htmlFor="password">Password</label> <br />
+        <input
+          type={showPassword ? "text" : "password"}
+          id="password"
+          name="password"
+          className="input-style"
+          placeholder="6+ character required"
+        />
+        <div
+          onClick={() => setShowPassword(!showPassword)}
+          className="absolute top-9 right-5 text-primary text-2xl"
+        >
+          {showPassword ? <FaEye /> : <FaEyeSlash />}
+        </div>
+      </div>
       <p>{passError}</p>
       {/* submit button */}
       <button className="flex justify-center text-gray-800 items-center mx-auto border rounded-md py-2 px-4 text-lg font-semibold bg-slate-50 transition-all  mt-10 mb-6 hover:my-8">

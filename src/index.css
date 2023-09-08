@@ -11,7 +11,7 @@ body {
 .input-style {
   @apply w-full outline-none py-3 px-4 rounded-md text-gray-800;
 }
-label {
+.create_task label {
   @apply font-semibold text-gray-700;
 }
 .create_task-input {

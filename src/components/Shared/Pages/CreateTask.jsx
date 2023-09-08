@@ -73,7 +73,7 @@ const CreateTask = () => {
         onSubmit={handleCreateTask}
         className="bg-white px-10 mt-6 py-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] space-y-3"
       >
-        <div>
+        <div className="create_task">
           <label htmlFor="title">Task Title*</label> <br />
           <input
             type="text"

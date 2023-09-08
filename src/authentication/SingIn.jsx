@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const SingIn = ({ isSignUpActive, setIsSignUpActive }) => {
+  const [showPassword, setShowPassword] = useState(false);
   const { logInWithEmailAndPassword, loading } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -31,14 +33,22 @@ const SingIn = ({ isSignUpActive, setIsSignUpActive }) => {
           className="input-style  mb-5"
           placeholder="example@gmail.com"
         />
-        <label htmlFor="password">Password</label> <br />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          className="input-style"
-          placeholder="******"
-        />
+        <div className="relative">
+          <label htmlFor="password">Password</label> <br />
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            name="password"
+            className="input-style"
+            placeholder="******"
+          />
+          <div
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute top-9 right-5 text-primary text-2xl"
+          >
+            {showPassword ? <FaEye /> : <FaEyeSlash />}
+          </div>
+        </div>
         <p className="text-rose-600">{error}</p>
         <button className="flex justify-center text-gray-800 items-center mx-auto border rounded-md py-2 px-4 text-lg font-semibold bg-slate-50 transition-all  mt-10 mb-6 hover:my-8">
           {loading ? "Loading" : "Sign In"}

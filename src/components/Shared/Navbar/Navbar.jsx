@@ -19,7 +19,7 @@ const Navbar = () => {
       </div>
       <ul className="py-5 border-b space-y-3">
         <li>
-          <Link className="flex items-center gap-2 text-lg">
+          <Link to={"/dashboard"} className="flex items-center gap-2 text-lg">
             <BiSolidDashboard size={24} /> Dashboard
           </Link>
         </li>
